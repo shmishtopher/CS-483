@@ -1,0 +1,222 @@
+%
+% @author   Shmish  "shmish90@gmail.com"
+% @legal    MIT     "(c) Christopher Schmitt"
+%
+
+
+\documentclass{article}
+
+
+%
+% Document Imports
+%
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{color}
+\usepackage{tikz}
+
+
+
+%
+% Document Configuration
+%
+
+\newcommand{\hwAuthor}{Christopher K. Schmitt}
+\newcommand{\hwSubject}{CS 483}
+\newcommand{\hwSection}{Section 01}
+\newcommand{\hwSemester}{Fall 2020}
+\newcommand{\hwAssignment}{Assignment 1}
+
+
+%
+% Document Environments
+%
+
+\setlength{\headheight}{65pt}
+\pagestyle{fancy}
+\lhead{\hwAuthor}
+\rhead{
+  \hwSubject \\
+  \hwSection \\
+  \hwSemester \\
+  \hwAssignment
+}
+
+\newenvironment{problem}[1]{
+  \nobreak\section*{Problem #1}
+}{}
+
+
+%
+% Document Start
+%
+
+\begin{document}
+  \begin{problem}{1}
+    Let $A$ be the set $\{x, y, z\}$ and $B$ be the set $\{x, y\}$
+
+    \begin{enumerate}
+      \item $A$ is not a subset of $B$
+      \item $B$ is a proper subset of $A$
+      \item $A \cup B = \{x, y, z\}$
+      \item $A \cap B = \{x, y\}$
+      \item $A \times B = \{(x, x), (x, y), (y, x), (y, y), (z, x), (z, y)\}$
+      \item $\mathcal{P}(B) = \{\emptyset, \{x\}, \{y\}, B\}$
+    \end{enumerate}
+  \end{problem}
+
+  \begin{problem}{2}
+    If $A$ has $a$ elements, and $B$ has $b$ elements, how many 
+    elements are in $A \times B$?
+
+    \begin{center}
+      $|A \times B| = ab$
+    \end{center}
+
+    \noindent
+    This is because, in order to pair every member of $A$ with
+    each memeber of $B$, $|A|\cdot|B|$ tuples are required.
+  \end{problem}
+
+  \begin{problem}{3}
+    If $C$ is a set with c elements, how many elements are in 
+    the power set of C?
+
+    \begin{center}
+      $|\mathcal{P}(C)| = 2^{c}$
+    \end{center}
+
+    \noindent
+    Each element of of $\mathcal{P}(C)$ can either contain or
+    exclude every element of $C$.  There will always be exactly
+    $2^{c}$ unique ways to do this.
+  \end{problem}
+
+  \begin{problem}{4}
+    Let $X$ be the set $\{1, 2, 3, 4, 5\}$ and $Y$ be the set
+    $\{6, 7, 8, 9, 10\}$.  Let $f : X \to Y$ and $g : X \times Y \to Y$
+
+    \begin{enumerate}
+      \item $f(2) = 7$
+      \item The range of $f$ is $Y$, the domain of $f$ is $X$
+      \item $g(2, 10) = 6$
+      \item The range of $g$ is $Y$, the domain of $g$ is $X \times Y$
+      \item $g(4, f(4)) = 8$
+    \end{enumerate}
+  \end{problem}
+
+  \begin{problem}{5}
+    \begin{enumerate}
+      \item $R = \{(a, a), (b, b), (c, c), (a, b), (b, a), (b, c), (c, b)\}$
+      \item $R = \{(a, a), (b, b), (c, c), (a, b), (a, c), (b, c)\}$
+      \item $R = \{(a, b), (b, a), (a, c), (c, a), (b, c), (c, b)\}$
+    \end{enumerate}
+  \end{problem}
+
+  \begin{problem}{6}
+    \begin{center}
+      \begin{tikzpicture}
+        \node[circle, draw] (1) at (0, 0) {$1$};
+        \node[circle, draw] (2) at (3, 0) {$2$};
+        \node[circle, draw] (3) at (3, 3) {$3$};
+        \node[circle, draw] (4) at (0, 3) {$4$};
+
+        \draw (1) -- (2);
+        \draw (2) -- (3);
+        \draw (2) -- (4);
+
+        \draw[red, thick] (1) -- (3);
+        \draw[red, thick] (1) -- (4);
+      \end{tikzpicture}
+    \end{center}
+
+    \begin{table}[h]
+      \centering
+      \begin{tabular}{ll}
+      Node & Degree \\ \hline
+      1 & 3 \\
+      2 & 3 \\
+      3 & 2 \\
+      4 & 2
+      \end{tabular}
+    \end{table}
+  \end{problem}
+
+  \begin{problem}{7}
+    \begin{equation*}
+      \begin{gathered}
+        G = (V, E)\\
+        V = \{1, 2, 3, 4, 5, 6\}\\
+        E = \{\{1, 4\}, \{1, 5\}, \{1, 6\}, \{2, 4\}, \{2, 5\}, \{2, 6\}, \{3, 4\}, \{3, 5\}, \{3, 6\}\}
+      \end{gathered}
+    \end{equation*}
+  \end{problem}
+
+  \begin{problem}{8}
+    If $a = b$, then $a - b = 0$.  The error in the proof is the
+    division by $(a - b)$.  This operation is undefined when the
+    denominator is $0$, therefore the proof is invalid.
+  \end{problem}
+
+  \begin{problem}{9}
+    \theoremstyle{definition}
+    \newtheorem*{theorem}{Theorem}
+
+    \begin{theorem}
+      $S(n) = 1 + 2 + 3 + \dotsb + n = \frac{n(n+1)}{2}$
+    \end{theorem}
+
+    \begin{proof}
+      By induction on $n$
+
+      \begin{description}
+        \item[Base:] When $n = 1$, $S(n) = 1 = \frac{1(1 + 1)}{2}$
+        \item[Inductive:] Suppose $S(k) = \frac{k(k + 1)}{2}$\\
+        $\implies S(k + 1) = 1 + 2 + 3 + \dotsb + k + (k + 1)$\\
+        $\implies S(k + 1) = S(k) + (k + 1) = \frac{k(k + 1)}{2} + (k + 1)$\\
+        $\implies S(k + 1) = \frac{(k + 1)((k + 1) + 1)}{2} = 1 + 2 + \dotsb + k + (k + 1)$  
+      \end{description}
+    \end{proof}
+  \end{problem}
+
+  \begin{problem}{10}
+    \begin{theorem}
+      For any $n \in \mathbb{Z}$, if $n^3+5$ is odd then $n$ is even.
+    \end{theorem}
+
+    \begin{proof}
+      Suppose that, if $n^3+5$ is odd then $n$ is also odd.
+      \begin{equation*}
+        \begin{split}
+          \implies & n^3 \text{ is odd, because the product of odd numbers is odd}\\
+          \implies & n^3 + 5 \text{ is even, because the sum of two odd numbers is even}\\
+          \therefore{} & n^3 + 5 \text{ is even, and then supposition is incorrect}
+        \end{split}
+      \end{equation*}
+    \end{proof}
+  \end{problem}
+
+  \begin{problem}{11}
+    \begin{theorem}
+      In a set of $51$ random integers in $[1, 100]$, there are at least two integers
+      that divide eachother without remainder.
+    \end{theorem}
+
+    \begin{proof}
+      Partition the set of $51$ integers such that each subset conforms to
+      the relation that each element of the subset is a multiple of another
+      element of the subset.  If this is down by grouping multiples of odd
+      numbers such that: $\{k, 2k, 4k, 8k, \dotsc , 2^ik\}$, where $k$ is
+      any odd number in $[1, 100]$, we will have 50 subsets.  By the 
+      pigeonhole principle, $\lceil \frac{51}{50} \rceil = 2$, so at least
+      $2$ random elements will be part of the same subset.  Because subsets
+      are constructed by their multiples, the larger one will divide by the 
+      smaller one without remainder.
+    \end{proof}
+  \end{problem}
+\end{document}

@@ -1,0 +1,133 @@
+%
+% @author   Shmish  "shmish90@gmail.com"
+% @legal    MIT     "(c) Christopher Schmitt"
+%
+
+
+\documentclass{article}
+
+
+%
+% Document Imports
+%
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{listings}
+
+
+
+%
+% Document Configuration
+%
+
+\newcommand{\hwAuthor}{Christopher K. Schmitt}
+\newcommand{\hwSubject}{CS 483}
+\newcommand{\hwSection}{Section 01}
+\newcommand{\hwSemester}{Fall 2020}
+\newcommand{\hwAssignment}{Assignment 5}
+
+\usetikzlibrary{arrows,automata}
+\usetikzlibrary{calc}
+
+
+%
+% Document Environments
+%
+
+\setlength{\headheight}{65pt}
+\pagestyle{fancy}
+\lhead{\hwAuthor}
+\rhead{
+  \hwSubject \\
+  \hwSection \\
+  \hwSemester \\
+  \hwAssignment
+}
+
+\newenvironment{problem}[1]{
+  \nobreak\section*{Problem #1}
+}{}
+
+
+%
+% Document Start
+%
+
+\begin{document}
+  \begin{problem}{1}
+    \begin{enumerate}
+      \item[a.] $f$ is not one-to-one, both $1$ and $3$ map to $6$
+      \item[b.] $f$ is not onto, $f$ does not cover $10$
+      \item[c.] $f$ is a  correspondence 
+      \item[d.] $g$ is one-to-one
+      \item[e.] $g$ is onto
+      \item[f.] $g$ is a  correspondence    
+    \end{enumerate}
+  \end{problem}
+
+  \begin{problem}{2}
+    \begin{proof}
+      $ $\\
+      Suppose $\mathcal{B}$ is countable.  Then there is a
+      correspondence between the naturals, $\mathbb{N}$, and
+      $\mathcal{B}$.  We define a function, $f(n)$, which maps each
+      natural to an element in $\mathcal{B}$.  It may look something
+      like this:
+      
+      \begin{center}
+        \begin{displaymath}
+          \begin{tabular}{ll}
+            $n$ & $f(n)$ \\ \hline
+            $1$ & $01000101\dots$ \\
+            $2$ & $10011101\dots$ \\
+            $3$ & $01111101\dots$ \\
+            $4$ & $01010000\dots$ \\
+            $\vdots$ & $\vdots$
+          \end{tabular}
+        \end{displaymath}
+      \end{center}
+
+      \noindent
+      now suppose we take the sequence $s \in \mathcal{B}$, which is
+      constructed like so: $s_i = 0$ when $f(i)_i = 1$, and $s_i = 1$
+      when $f(i)_i = 0$.  Essentially, the $i$'th position of $s$ is
+      always the opposite of a single bit in every $f(n)$.  Because
+      $s \in \mathcal{B}$, but $f$ cannot produce $s$, there is no
+      bijection between $\mathcal{B}$ and $\mathbb{N}$, so
+      $\mathcal{B}$ is not countable.
+      $ $\\
+    \end{proof}
+  \end{problem}
+
+  \begin{problem}{3}
+    \begin{proof}
+      $ $\\
+      Suppose $T$ is decided by $\mathcal{R}$.  We can construct TM
+      $\mathcal{Z}$ as follows:
+
+      \begin{center}
+        $\mathcal{Z}$, on input $<M, w>$: \begin{enumerate}
+          \item Create a TM $\mathcal{Z}_0$ as follows.  On input $x$: \begin{enumerate}
+            \item Reject if $x$ is not 10, or 01
+            \item Accept if $x$ is 01
+            \item Run $M$ on $w$, and accept if $M$ accepts 
+          \end{enumerate}
+          \item Run $\mathcal{R}$ on $<\mathcal{Z}_0>$
+          \item Accept if $\mathcal{R}$ accepts, otherwise reject
+        \end{enumerate}
+      \end{center}
+
+      \noindent
+      We know that $T$ in undecidable because $\mathcal{Z}$ decides
+      $A_{TM}$ (which is not decidable).
+      $ $\\
+    \end{proof}
+  \end{problem}
+\end{document}
